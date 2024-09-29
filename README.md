@@ -1,7 +1,6 @@
 # game-of-life
 
-# game-of-life
+Implementeret minimumskrav
 
-Implementeret nødvendig logik, men man skal manuelt trykke start, for at gå videre til næste generation
+Deployment: https://loxiuz.github.io/game-of-life/
 
-Deployment: 
