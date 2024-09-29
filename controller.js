@@ -1,11 +1,12 @@
 "use strict";
 
-import Grid from "../model/grid.js";
+import Grid from "./gridModel.js";
 
 window.addEventListener("load", start);
 
 const grid = new Grid(15, 15);
-const isStarted = false;
+let isStarted = false;
+let intervalId;
 
 function start() {
   console.log("Controller script running...");
@@ -37,13 +38,28 @@ function newGeneration() {
   }
 }
 
+function activateGame() {
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+  intervalId = setInterval(() => {
+    if (isStarted) {
+      newGeneration();
+      updateDisplayGrid();
+    }
+  }, 500);
+}
+
 function startClick() {
   console.log("Start clicked");
-  newGeneration();
+  isStarted = true;
+  activateGame();
   updateDisplayGrid();
 }
 function stopClick() {
   console.log("Stop clicked");
+  isStarted = false;
+  updateDisplayGrid();
 }
 function clearClick() {
   console.log("Clear clicked");
